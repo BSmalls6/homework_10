@@ -109,7 +109,7 @@ var renderNoteList = function(notes) {
   $noteList.empty();
 
   var noteListItems = [];
-
+console.log("notes"+notes);
   for (var i = 0; i < notes.length; i++) {
     var note = notes[i];
 
@@ -129,6 +129,7 @@ var renderNoteList = function(notes) {
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function() {
   return getNotes().then(function(data) {
+    console.log(data);
     renderNoteList(data);
   });
 };

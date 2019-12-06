@@ -19,32 +19,25 @@ app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 app.get("/api/notes", function (req, res) {
-  res.sendFile(path.join(__dirname, "./db/db.json"), "utf8")
-      .then(function (res) {
-          return res.json(JSON.parse(res));
+  fs.readFileSync(path.join(__dirname, "./db/db.json"), "utf8", function(data,err){
+    console.log(data);
+          return res.json(JSON.parse(data));
       });
 });
 
 
-app.post("/api/notes", function (req, res) {
-  var newNote = req.body;
-  fs.readFile(path.join(__dirname, "./db/db.json"), "utf8")
-});
 
-// end pathing
 // actions
-app.get("/api/notes", function(req, res) {
-fs.readFile(path.join("./db/db", res , (err)=>{
-  if (err) throw (err);
-}))
-  });
+
 
   
   app.post("/api/notes", function(req, res) {
 let note = req.body;
-    let noteData = fs.readFile(path.join("./db/db", res , (err)=>{
+console.log(note);
+    let noteData = fs.readFileSync(path.join("./db/db.json"), res , (err)=>{
       if (err) throw (err);
-    }));
+    });
+    console.log(noteData);
     let newNote = JSON.parse(noteData);
 
     newNote.push(note);

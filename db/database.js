@@ -4,7 +4,7 @@ const fs = require("fs");
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
-class Store {
+class Database {
   constructor() {
     this.lastId = 0;
   }
@@ -57,4 +57,4 @@ class Store {
   }
 }
 
-module.exports = new Store();
+module.exports = new Database();

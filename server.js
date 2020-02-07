@@ -1,14 +1,15 @@
-var express = require("express");
+
+var PORT = process.env.PORT || 3000
 var fs = require("fs");
 var path = require("path")
 var app = express();
 
-var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "./public")));
-app.use(express.static(path.join(__dirname, "./homework_10")));
+// app.use(express.static(path.join(__dirname, "./homework_10")));
 
 // pathing
 app.get("/", function (req, res) {
@@ -71,3 +72,6 @@ require("./routes")(app);
 app.listen(PORT, function () {
   console.log("App listening on PORT: " + PORT);
 });
+
+
+

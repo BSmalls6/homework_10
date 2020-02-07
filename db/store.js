@@ -35,7 +35,10 @@ class Store {
   addNote(note) {
     const { title, text } = note;
 
-    
+    if (!title || !text) {
+      throw new Error("Note 'title' and 'text' cannot be blank");
+    }
+
     // Increment `this.lastId` and assign it to `newNote.id`
     const newNote = { title, text, id: ++this.lastId };
 
